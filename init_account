@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo apt-get install -y glance-client python-novaclient
+
+export OS_TENANT_NAME=$1
+export OS_USERNAME=$1
+export OS_PASSWORD=$2
+export OS_AUTH_URL="http://123.126.53.170:5000/v2.0/"
+
+nova secgroup-add-rule default tcp 1 65535 0.0.0.0/0
+nova secgroup-add-rule default udp 1 65535 0.0.0.0/0
+nova secgroup-add-rule default icmp -1 -1 0.0.0.0/0
